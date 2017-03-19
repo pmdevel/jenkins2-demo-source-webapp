@@ -20,7 +20,6 @@
     <properties>
         <docker.image.prefix>pmdevel</docker.image.prefix>
         <java.version>1.8</java.version>
-        <build.number>0</build.number>
     </properties>
 
     <build>
@@ -36,7 +35,7 @@
                 <version>0.4.11</version>
                 <configuration>
                     <serverId>docker-hub</serverId>
-                    <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}-${build.number}</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
