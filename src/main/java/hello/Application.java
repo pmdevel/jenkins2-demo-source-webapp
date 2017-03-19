@@ -12,12 +12,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Application {
 
-    @Value( "${hello.message:Hello undefined}")
+    @Value( "${hello.title:UNDEFINED }")
+    private String helloTitle;
+
+    @Value( "${hello.message:UNDEFINED}")
     private String helloMessage;
 
     @RequestMapping(value="/", produces = "text/html")
     public String home() {
-        return helloMessage;
+        StringBuffer sb = new StringBuffer()
+                .append("<html><head><title>")
+                .append(helloTitle)
+                .append("</title></head>")
+                .append("<html><body>")
+                .append(helloMessage)
+                .append("</body></html>");
+
+        return sb.toString();
     }
 
     public static void main(String[] args) {
