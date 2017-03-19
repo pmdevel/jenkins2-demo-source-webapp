@@ -44,6 +44,9 @@
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
+                        <buildArgs>
+                            <VERSION>${version}</VERSION>
+                        </buildArgs>
                     </resources>
                 </configuration>
             </plugin>
