@@ -55,7 +55,7 @@ public class HelloWorldConfigurationTests {
                 .getForEntity("http://localhost:" + this.port + "/", String.class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
         if ( failJunitTests ) {
-            assertTrue("Test failed on demand 'fail.unit.tests=true'", false);
+            assertTrue("Test failed on demand 'fail.junit.tests=true'", false);
         }
 
         System.out.println("Message: " + entity.getBody());
