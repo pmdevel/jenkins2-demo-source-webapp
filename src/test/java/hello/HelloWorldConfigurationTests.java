@@ -16,6 +16,8 @@
 package hello;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,11 +46,18 @@ public class HelloWorldConfigurationTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @Value("${fail.junit.tests:false}")
+    private boolean failJunitTests;
+
     @Test
     public void testGreeting() throws Exception {
         ResponseEntity<String> entity = restTemplate
                 .getForEntity("http://localhost:" + this.port + "/", String.class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
+        if ( failJunitTests ) {
+            assertTrue("Test failed on demand 'fail.unit.tests=true'", false);
+        }
+
         System.out.println("Message: " + entity.getBody());
     }
 
